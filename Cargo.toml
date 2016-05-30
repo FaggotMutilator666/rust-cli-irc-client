@@ -1,0 +1,9 @@
+[package]
+name = "irc"
+version = "0.1.0"
+authors = ["Danik1"]
+
+[dependencies]
+#text_io = "*"
+#clap = "*"
+term-painter = "*"
