@@ -14,11 +14,11 @@ use std::io::Write;
 
 
 fn main() {
-    let mut stream = TcpStream::connect("irc.sorcery.net:6667").unwrap();
+    let mut stream = TcpStream::connect("<ip>:<port>").unwrap();
     let listener = irc::IrcListener::new(Box::new(stream.try_clone().unwrap()));
     thread::spawn(move || {
-        let server = tcp::Server::new("localhost:300");
-        let _ = stream.write(b"NICK AryChr\r\nUSER AryChr test test :Windows 3.1\r\n");
+        let server = tcp::Server::new("localhost:300");//you can use what ever you want here
+        let _ = stream.write(b"NICK <name>\r\nUSER <name> test test :<text>\r\n");// initial commands
         server.start(|s: String| {
             let _ = stream.write(s.as_bytes());
             println!("[X]");
